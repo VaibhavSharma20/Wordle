@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Padhakku Wordle</title>
+  <link rel="icon" href="logo/Logo.webp">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="js/md5.min.js"></script>
+</head>
+
+<body>
+  <nav class="navbar">
+    <ul class="navbar-default mx-auto">
+      <li class="left-nav-btn"><button data-modal-target="#modal" class="btn btn-light btn-lg mx-auto size"><i
+            class="fa-solid fa-chart-simple"></i></button></li>
+      <a class="navbar-brand" href="#">WORDLE</a>
+      <li class="right-nav-btn"><button data-modal-target="#modal2" class="btn btn-light btn-lg mx-auto size"><i
+            class="fa-solid fa-question"></i></button></li>
+    </ul>
+    <div class="timer">
+      <h5>Next Word:</h5>
+      <h5 id="timer_div"></h5>
+    </div>
+  </nav>
+
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <div class="modal-title">
+        <h2>Statistics</h2>
+      </div>
+      <button data-close-button class="close-button">
+        <h3>&times;</h3>
+      </button>
+    </div>
+    <div class="modal-body">
+    </div>
+    <div class="modal-sharebtn">
+      <h4>Do share with your friends!!<h4>
+      <button share-button type="button" class="btn btn-outline-light btn-lg sharebtn">Share</button>
+    </div>
+  </div>
+
+  <div class="modal" id="modal2">
+    <div class="modal-header">
+      <div class="modal-title">
+        <h2>How To Play</h2>
+      </div>
+      <button data-close-button class="close-button">
+        <h3>&times;</h3>
+      </button>
+    </div>
+    <div class="modal-ins">
+      <p>Guess the word in six tries.</p>
+      <p>Each guess must be a valid five-letter word. Hit the enter button to submit.</p>
+      <p>After each guess, the color of the tiles will change to show how close your guess was to the word.</p>
+    </div>
+    <div class="modal-ins-show">
+      <p>Example</p>
+      <div class="exp-tile green-overlay">P</div>
+      <div class="exp-tile grey-overlay">L</div>
+      <div class="exp-tile grey-overlay">A</div>
+      <div class="exp-tile yellow-overlay">N</div>
+      <div class="exp-tile grey-overlay">T</div>
+      <p>The letter P is in the word and in the correct spot.</p>
+      <p>The letter N is in the word but in the wrong spot.</p>
+      <p>Letters L, A and T is not in the word in any spot.</p>
+    </div>
+    <div class="modal-footer">
+      <p>A new word will be available ever 12 hours! ⏳</p>
+      <p>Week starts on sunday! 🗓️</p>
+    </div>
+  </div>
+
+  <div class="modal" id="end-modal">
+    <div class="modal-winstat">
+    </div>
+    <div class="modal-score">
+    </div>
+    <div class="modal-feedback">
+      <h4>Would you be Interested to know your Daily and Weekly Ranks?</h4>
+      <button thumbs-up type="button" class="thumbs btn btn-light btn-lg "><i
+          class="fa-solid fa-thumbs-up"></i></button>
+      <button thumbs-down type="button" class="thumbs btn btn-light btn-lg"><i
+          class="fa-solid fa-thumbs-down"></i></button>
+    </div>
+
+    <div class="modal-sharebtn">
+      <h4>Do share with your friends!!<h4>
+      <button share-button type="button" class="btn btn-outline-light btn-lg sharebtn">Share</button>
+    </div>
+
+    <div class="modal-timer">
+      <h4>Next Word:</h4>
+      <h4 class="countdown"> </h4>
+    </div>
+  </div>
+  <div class="popup">
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+
+  <div class="game-container">
+    <div class="message-container"></div>
+    <div class="tile-container"></div>
+    <div class="key-container ">
+      <div class="keyboard-row">
+      <button id="Q">Q</button>
+      <button id="W">W</button>
+      <button id="E">E</button>
+      <button id="R">R</button>
+      <button id="T">T</button>
+      <button id="Y">Y</button>
+      <button id="U">U</button>
+      <button id="I">I</button>
+      <button id="O">O</button>
+      <button id="P">P</button>
+      </div>
+      <div class="keyboard-row">
+      <button id="A">A</button>
+      <button id="S">S</button>
+      <button id="D">D</button>
+      <button id="F">F</button>
+      <button id="G">G</button>
+      <button id="H">H</button>
+      <button id="J">J</button>
+      <button id="K">K</button>
+      <button id="L">L</button>
+      </div>
+      <div class="keyboard-row">
+      <button class="wide-button" id="ENT">↩</button>
+      <button id="Z">Z</button>
+      <button id="X">X</button>
+      <button id="C">C</button>
+      <button id="V">V</button>
+      <button id="B">B</button>
+      <button id="N">N</button>
+      <button id="M">M</button>
+      <button class="wide-button" id="«">⌫</button>
+      </div>
+    </div>
+  </div>
+  <script src="js/app.js"></script>
+</body>
+
+</html>

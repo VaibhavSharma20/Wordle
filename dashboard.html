@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wordle Dashboard</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="dashboard-style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <ul class="navbar-default mx-auto">
+        <li class="left-nav-btn">
+          <button Stats class="btn btn-light btn-lg mx-auto size">
+            <i class="fa-solid fa-chart-simple"></i></button
+          >STATS
+        </li>
+        <a class="navbar-brand" href="#"
+          >Wordle Dashboard</a>
+        <li class="right-nav-btn">
+          <button Words class="btn btn-light btn-lg mx-auto size">
+            <i class="fa-solid fa-file-word"></i></button
+          >WORDS
+        </li>
+      </ul>
+    </nav>
+
+    <div class="stats">
+      <h2>STATISTICS</h2>
+    </div>
+
+    <div class="today">
+      <h2>TODAY'S WORD</h2>
+    </div>
+
+    <div class="words inactive">
+      <h2>EDIT WORDS</h2>
+      <input Input class="input" type="text" autocomplete="off" maxlength="5" />
+      <button Add class="btn btn-lg btn-outline-dark" onclick="this.blur();">
+        ADD
+      </button>
+      <button Delete class="btn btn-lg btn-outline-dark" onclick="this.blur();">
+        DEL
+      </button>
+      <div class="message-container"></div>
+      <h2 id="Total"></h2>
+      <div class="word-list"></div>
+    </div>
+
+    <script src="dashboard.js"></script>
+  </body>
+</html>
