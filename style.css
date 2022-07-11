@@ -62,11 +62,12 @@ h1{
     margin: auto;
 }
 
-.navbar-brand {
+.navbar-brand.brand {
     font-size: 30px;
     color: white;
     font-weight: bold;
   }
+
 
 .navbar-brand{
     margin-right: 0;
